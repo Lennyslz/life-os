@@ -39,7 +39,7 @@ export default function StudyWork() {
       </div>
 
       <Card>
-        <form onSubmit={submit} className="grid gap-2 sm:grid-cols-6">
+        <form onSubmit={submit} className="grid grid-cols-1 gap-2 sm:grid-cols-6">
           <input value={form.title} onChange={set('title')} placeholder={area === 'estudio' ? 'Ej. Entregar proyecto de programación' : 'Ej. Enviar informe semanal'}
             aria-label="Título" className={`${field} sm:col-span-6`} />
           <input value={form.subject} onChange={set('subject')} placeholder={area === 'estudio' ? 'Materia' : 'Empresa o equipo'} aria-label="Materia o empresa" className={`${field} sm:col-span-2`} />
@@ -50,7 +50,7 @@ export default function StudyWork() {
       </Card>
 
       {items.loading ? <Notice>Cargando…</Notice> : items.error ? <Notice onRetry={items.reload}>{items.error}</Notice> : (
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {STATUSES.map(([key, label]) => {
             const col = rows.filter((r) => r.status === key)
             return (

@@ -5,10 +5,13 @@ import TaskItem from '../components/tasks/TaskItem'
 import DailyProgress from '../components/dashboard/DailyProgress'
 import HabitTracker from '../components/habits/HabitTracker'
 import GratitudePanel from '../components/gratitude/GratitudePanel'
+import UpcomingTasks from '../components/dashboard/UpcomingTasks'
+import StudyTimer from '../components/study/StudyTimer'
+import StudyStats from '../components/study/StudyStats'
 import { formatLong, greeting, todayISO } from '../utils/dates'
 import { byTimeThenCreated } from '../utils/tasks'
 
-export default function MyDay({ tasks, habits, logs, gratitudes, projects, onNavigate }) {
+export default function MyDay({ tasks, habits, logs, gratitudes, projects, study, onNavigate }) {
   const today = todayISO()
   const todays = tasks.rows.filter((t) => t.due_date === today).sort(byTimeThenCreated)
   const overdue = tasks.rows.filter((t) => !t.done && t.due_date && t.due_date < today)
@@ -37,7 +40,7 @@ export default function MyDay({ tasks, habits, logs, gratitudes, projects, onNav
         </div>
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div className="space-y-6 lg:col-span-2">
           <Card title="Tareas de hoy">
             <QuickAdd onAdd={addQuick} />
@@ -48,6 +51,9 @@ export default function MyDay({ tasks, habits, logs, gratitudes, projects, onNav
                 : <ul>{todays.map(item)}</ul>}
             </div>
           </Card>
+
+          <StudyStats study={study}
+            action={<button onClick={() => onNavigate('cursos')} className="text-xs text-accent underline underline-offset-2">Cursos e historial</button>} />
 
           {overdue.length > 0 && (
             <Card title={`Vencidas (${overdue.length})`}>
@@ -61,6 +67,8 @@ export default function MyDay({ tasks, habits, logs, gratitudes, projects, onNav
         <div className="space-y-6">
           <DailyProgress tasks={todays} />
           <GratitudePanel items={gratitudes} />
+          <UpcomingTasks tasks={tasks} onUpdate={tasks.update} onNavigate={onNavigate} />
+          <StudyTimer study={study} />
         </div>
       </div>
     </div>

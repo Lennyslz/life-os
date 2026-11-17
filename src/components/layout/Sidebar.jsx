@@ -1,4 +1,4 @@
-import { BookOpen, CalendarDays, CheckSquare, Cloud, Flame, FolderKanban, GraduationCap, HardDrive, LogOut, PanelLeftClose, PanelLeftOpen, Sun, Wallet, X } from 'lucide-react'
+import { BookOpen, CalendarDays, CheckSquare, Cloud, Flame, FolderKanban, GraduationCap, HardDrive, LogOut, PanelLeftClose, PanelLeftOpen, Sun, Timer, Wallet, X } from 'lucide-react'
 
 export const NAV = [
   { id: 'dia', label: 'Mi día', icon: Sun },
@@ -6,6 +6,7 @@ export const NAV = [
   { id: 'calendario', label: 'Calendario', icon: CalendarDays },
   { id: 'habitos', label: 'Hábitos', icon: Flame },
   { id: 'estudio', label: 'Estudio y trabajo', icon: GraduationCap },
+  { id: 'cursos', label: 'Cursos y tiempo', icon: Timer },
   { id: 'proyectos', label: 'Proyectos y notas', icon: FolderKanban },
   { id: 'gastos', label: 'Gastos', icon: Wallet },
   { id: 'lectura', label: 'Lectura y oración', icon: BookOpen },

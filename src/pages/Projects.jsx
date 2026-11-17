@@ -40,7 +40,7 @@ export default function Projects({ projects, tasks }) {
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-4 md:p-8">
       <h1 className="text-3xl font-semibold">Proyectos y notas</h1>
-      <div className="grid gap-6 lg:grid-cols-[16rem_1fr]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[16rem_1fr]">
         <Card title="Proyectos">
           <form onSubmit={addProject} className="mb-3 flex gap-2">
             <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Nuevo proyecto" aria-label="Nuevo proyecto" className={`${field} min-w-0 flex-1`} />

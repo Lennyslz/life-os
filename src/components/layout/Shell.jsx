@@ -9,7 +9,9 @@ import StudyWork from '../../pages/StudyWork'
 import Projects from '../../pages/Projects'
 import Expenses from '../../pages/Expenses'
 import Reading from '../../pages/Reading'
+import Study from '../../pages/Study'
 import { useTable } from '../../hooks/useTable'
+import { useStudy } from '../../hooks/useStudy'
 import { DEFAULT_HABITS } from '../../utils/habits'
 
 const readPage = () => {
@@ -23,6 +25,7 @@ export default function Shell({ user, onSignOut }) {
   const logs = useTable('habit_logs')
   const gratitudes = useTable('gratitudes')
   const projects = useTable('projects')
+  const study = useStudy(user?.id ?? 'local')
 
   const [page, setPage] = useState(readPage)
   const [collapsed, setCollapsed] = useState(() => localStorage.getItem('lifeos:sidebar') === 'collapsed')
@@ -50,11 +53,12 @@ export default function Shell({ user, onSignOut }) {
 
   const current = NAV.find((n) => n.id === page)
   let view
-  if (page === 'dia') view = <MyDay {...{ tasks, habits, logs, gratitudes, projects }} onNavigate={navigate} />
+  if (page === 'dia') view = <MyDay {...{ tasks, habits, logs, gratitudes, projects, study }} onNavigate={navigate} />
   else if (page === 'tareas') view = <Tasks tasks={tasks} projects={projects} />
   else if (page === 'habitos') view = <Habits habits={habits} logs={logs} />
   else if (page === 'calendario') view = <Calendar tasks={tasks} projects={projects} />
   else if (page === 'estudio') view = <StudyWork />
+  else if (page === 'cursos') view = <Study study={study} />
   else if (page === 'proyectos') view = <Projects projects={projects} tasks={tasks} />
   else if (page === 'gastos') view = <Expenses />
   else view = <Reading />

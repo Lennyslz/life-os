@@ -128,7 +128,7 @@ export default function Calendar({ tasks, projects }) {
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2" action={header}>
           <div className="grid grid-cols-7 pb-1 text-center text-xs text-mute">
             {WEEKDAYS.map((w) => <span key={w.dow}>{w.name.slice(0, 3)}</span>)}

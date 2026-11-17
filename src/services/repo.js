@@ -40,6 +40,9 @@ const write = (t, rows) => localStorage.setItem(key(t), JSON.stringify(rows))
 const local = (table) => ({
   async list() { return read(table) },
   async insert(row) {
+    if (row.id && read(table).some((r) => r.id === row.id)) {
+      throw Object.assign(new Error('duplicate key'), { code: '23505' }) // igual que Postgres
+    }
     const created = { id: crypto.randomUUID(), created_at: new Date().toISOString(), ...row }
     write(table, [...read(table), created])
     return created

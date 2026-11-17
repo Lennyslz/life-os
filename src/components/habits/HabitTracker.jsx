@@ -101,7 +101,7 @@ export default function HabitTracker({ habits, logs }) {
             <span className="text-2xl font-semibold tabular-nums">{overall === null ? '—' : `${overall}%`}</span>
           </div>
 
-          <div className="grid gap-x-8 gap-y-8 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-2">
             {habits.rows.map((h, i) => {
               const s = stats[i]
               return (

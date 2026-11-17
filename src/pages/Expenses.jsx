@@ -58,14 +58,14 @@ export default function Expenses() {
     <div className="mx-auto max-w-5xl space-y-6 p-4 md:p-8">
       <div className="flex flex-wrap items-end justify-between gap-3"><h1 className="text-3xl font-semibold">Gastos</h1>{nav}</div>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[['Ingresos', income, 'text-accent'], ['Gastos', spent, 'text-danger'], ['Balance', income - spent, income - spent < 0 ? 'text-danger' : 'text-ink']].map(([l, v, c]) => (
           <Card key={l}><p className="text-sm text-mute">{l}</p><p className={`mt-1 text-2xl font-semibold tabular-nums ${c}`}>{fmt(v)}</p></Card>
         ))}
       </div>
 
       <Card title={editId ? 'Editar movimiento' : 'Nuevo movimiento'}>
-        <form onSubmit={submit} className="grid gap-2 sm:grid-cols-6">
+        <form onSubmit={submit} className="grid grid-cols-1 gap-2 sm:grid-cols-6">
           <div className="flex rounded-lg border border-line p-0.5 text-sm sm:col-span-2" role="group" aria-label="Tipo">
             {['gasto', 'ingreso'].map((k) => (
               <button type="button" key={k} onClick={() => setKind(k)} aria-pressed={form.kind === k}
@@ -81,7 +81,7 @@ export default function Expenses() {
         </form>
       </Card>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card title="Gastos por categoría">
           {byCat.length === 0 ? <Notice>Sin gastos este mes.</Notice> : (
             <ul className="space-y-3">
